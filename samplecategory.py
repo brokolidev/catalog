@@ -30,12 +30,6 @@ item = CategoryItem(name="Virtual Reality Headsets, Parts & Accessories", descri
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Virtual Reality Headsets, Parts & Accessories", description="Virtual Reality Headsets, Parts & Accessories",
-                     category=electronics)
-
-session.add(item)
-session.commit()
-
 item = CategoryItem(name="Cell Phones, Smart Watches & Accessories", description="Cell Phones, Smart Watches & Accessories",
                      category=electronics)
 

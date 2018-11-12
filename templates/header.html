@@ -13,6 +13,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/style.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
   </head>
   <body>
     <div class="container">
@@ -21,9 +23,22 @@
           <div class="col-4">
               <h1><a href="/">Catalog App</a></h1>
           </div>
-          <div class="col-5">
-          </div>
           <div class="col-3">
-              Login section
+          </div>
+          <div class="col-5 align-middle">
+              {% if login_session['username']: %}
+              <div id="result"><p>Welcome {{login_session['username']}}! | <a href="/gdisconnect">Logout</a></p></div>
+              {% else %}
+              <div id="signinButton">
+                  <span class="g-signin"
+                      data-scope="openid email"
+                      data-clientid="620281320418-hnch06snivkscoba8cj8vtts0ruii0pk.apps.googleusercontent.com"
+                      data-redirecturi="postmessage"
+                      data-accesstype="offline"
+                      data-cookiepolicy="single_host_origin"
+                      data-callback="signInCallback"
+                      data-approvalprompt="force"></span>
+              </div>
+              {% endif %}
           </div>
         </div>

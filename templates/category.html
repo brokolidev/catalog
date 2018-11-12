@@ -3,7 +3,7 @@
         <p class="lead">Login to add or edit items.</p>
 
       <div class="row">
-        <div class="col-4 decorated_list">
+        <div class="decorated_list col-4">
             <h2>Categories</h2>
             <ul class="list-group">
             {% for category in categories %}
@@ -12,10 +12,10 @@
             </ul>
         </div>
         <div class="col-8 decorated_list">
-            <h2>Recent 10 Items</h2>
+            <h2>{{cur_category.name|capitalize}} Items({{items|length}} items)</h2>
             <ul class="list-group">
-            {% for item in recentItems %}
-                <li class="list-group-item">{{item.name|capitalize}}({{item.category.name|capitalize}})</li>
+            {% for item in items %}
+                <li class="list-group-item"><a href="/category/{{cur_category.id}}/item/{{item.id}}">{{item.name|capitalize}}</a></li>
             {% endfor %}
             </ul>
         </div>

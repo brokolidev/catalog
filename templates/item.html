@@ -1,0 +1,13 @@
+{% include "header.html" %}
+
+        <p class="lead"><a href="#"></a></p>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{cur_item.name|capitalize}}</h5>
+            <p class="card-text">{{cur_item.description|capitalize}}</p>
+            <a href="/category/{{cur_category.id}}" class="btn btn-primary">Go back to {{cur_category.name|capitalize}}</a>
+        </div>
+    </div>
+
+{% include "footer.html" %}

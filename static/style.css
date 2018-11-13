@@ -3,6 +3,10 @@ body {
     padding-bottom: 2rem;
 }
 
+a{
+    color: black;
+}
+
 h3 {
     margin-top: 2rem;
 }
@@ -31,4 +35,17 @@ hr {
 #result{
     text-align: right;
     padding-top: 20px;
+}
+
+.edit_category a{
+    color: green;
+    padding-left: 10px;
+}
+
+.delete_category a{
+    color: red;
+}
+
+.logout_btn{
+    margin-left: 5px;
 }

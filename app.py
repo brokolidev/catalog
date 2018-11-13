@@ -29,6 +29,7 @@ def showAll():
     recentItems = session.query(CategoryItem).order_by(CategoryItem.datetime.desc()).limit(10)
     return render_template('index.html', title=title, categories=categories, recentItems=recentItems, STATE=state, login_session=login_session)
 
+# show category and it's items
 @app.route('/category/<int:category_id>')
 def showCategoryItems(category_id):
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
@@ -39,6 +40,7 @@ def showCategoryItems(category_id):
     items = session.query(CategoryItem).filter_by(category_id=category_id).order_by(CategoryItem.datetime.desc()).all()
     return render_template('category.html', title=title, categories=categories, cur_category=cur_category, items=items, STATE=state, login_session=login_session)
 
+# show item's detail
 @app.route('/category/<int:category_id>/item/<int:item_id>')
 def showItemDetails(category_id, item_id):
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
@@ -48,6 +50,48 @@ def showItemDetails(category_id, item_id):
     cur_item = session.query(CategoryItem).filter_by(id=item_id).one()
     title = "Details of {}".format(cur_item.name.capitalize())
     return render_template('item.html', title=title, cur_category=cur_category, cur_item=cur_item, STATE=state, login_session=login_session)
+
+# add a new category
+@app.route('/category/new', methods=['GET', 'POST'])
+def addCategory():
+    if request.method == 'POST':  # save a new category
+        newCategory = Category(name=request.form['categoryName'])
+        session.add(newCategory)
+        session.commit()
+        flash('New category created!!')
+        return redirect('/')
+    else:
+        state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
+        login_session['state'] = state
+        title = "Add a new category"
+    return render_template('addcategory.html', title=title, login_session=login_session)
+
+# edit a category
+@app.route('/category/edit/<int:category_id>', methods=['GET', 'POST'])
+def editCategory(category_id):
+    if request.method == 'POST':  # save a new category
+        targetCategory = session.query(Category).filter_by(id=category_id).one()
+        targetCategory.name = request.form['categoryName']
+        session.add(targetCategory)
+        session.commit()
+        flash('Category edited successfully!!')
+        return redirect('/')
+    else:
+        targetCategory = session.query(Category).filter_by(id=category_id).one()
+        state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
+        login_session['state'] = state
+        title = "Edit {} category".format(targetCategory.name)
+    return render_template('editcategory.html', title=title, login_session=login_session, targetCategory=targetCategory)
+
+# delete a category
+@app.route('/category/delete/<int:category_id>', methods=['GET'])
+def deleteCategory(category_id):
+    targetCategory = session.query(Category).filter_by(id=category_id).one()
+    session.delete(targetCategory)
+    session.commit()
+    # todo : need to delete all belonging items as well
+    flash('Category deleted successfully!!')
+    return redirect('/')
 
 # Google login connect
 @app.route('/gconnect', methods=['POST'])

@@ -27,7 +27,10 @@
           </div>
           <div class="col-5 align-middle">
               {% if login_session['username']: %}
-              <div id="result"><p>Welcome {{login_session['username']}}! | <a href="/gdisconnect">Logout</a></p></div>
+              <div id="result">
+                  <p>Welcome {{login_session['username']}}
+                      <a class="logout_btn" href="/gdisconnect"><button type="button" class='btn btn-sm btn-danger'>Logout</button></a></p>
+              </div>
               {% else %}
               <div id="signinButton">
                   <span class="g-signin"

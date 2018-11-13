@@ -1,6 +1,10 @@
 {% include "header.html" %}
 
-        <p class="lead">Login to add or edit items.</p>
+    {% if login_session['username']: %}
+    <p class="lead"><a href="/category/new">Add an item</a></p>
+    {% else %}
+    <p class="lead">Login to add or edit items.</p>
+    {% endif %}
 
       <div class="row">
         <div class="decorated_list col-4">

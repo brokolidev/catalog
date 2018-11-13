@@ -1,0 +1,17 @@
+{% include "header.html" %}
+
+    <p class="lead">{{title}}</p>
+
+    <form action="/category/edit/{{targetCategory.id}}" method='post'>
+        <div class="form-group row">
+            <label for="categoryName" class="col-sm-2 col-form-label">Category name</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Enter name of a new category" value="{{targetCategory.name}}">
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+    </form>
+
+
+{% include "footer.html" %}

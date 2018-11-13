@@ -1,0 +1,34 @@
+{% include "header.html" %}
+
+    <p class="lead">Add a new item</p>
+
+    <form action="/item/new" method='post'>
+        <div class="form-group row">
+            <label for="category_id" class="col-sm-2 col-form-label">Select a category</label>
+            <div class="col-sm-3">
+                <select id="category_id" class="form-control" name="category_id">
+                    {% for category in categories %}
+                    <option value="{{category.id}}">{{category.name|capitalize}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="itemname" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="itemname" name="itemname" placeholder="Enter name of an item">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-3">
+                <textarea class="form-control" id="description" name="description" rows="6" placeholder="Enter description of an item"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+
+
+{% include "footer.html" %}

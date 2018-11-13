@@ -28,7 +28,15 @@ function signInCallback(authResult){
 // for deleting a category
 $('.delete_category').on('click', function(e){
     e.preventDefault();
-    if (confirm("Are you sure you delete this category?") == true) {
+    if (confirm("Are you sure you want to delete this category?") == true) {
+        url = $(this).children('a').attr('href');
+        window.location.href = url;
+    }
+});
+
+$('.delete_item').on('click', function(e){
+    e.preventDefault();
+    if (confirm("Are you sure you want to delete this item?") == true) {
         url = $(this).children('a').attr('href');
         window.location.href = url;
     }

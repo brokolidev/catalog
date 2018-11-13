@@ -37,12 +37,14 @@ hr {
     padding-top: 20px;
 }
 
-.edit_category a{
+.edit_category a,
+.edit_item a{
     color: green;
     padding-left: 10px;
 }
 
-.delete_category a{
+.delete_category a,
+.delete_item a{
     color: red;
 }
 

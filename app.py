@@ -139,11 +139,29 @@ def deleteItem(item_id):
     flash('Item deleted successfully!!')
     return redirect('/')
 
-# JSON API
+# JSON API - whole catalog
 @app.route('/catalog.json')
 def categoryJSON():
     categories = session.query(Category).options(joinedload(Category.items)).all()
     return jsonify(category=[dict(c.serialize, items=[i.serialize for i in c.items]) for c in categories])
+
+# JSON API - all categories
+@app.route('/categories/JSON')
+def categoriesJSON():
+    categories = session.query(Category).all()
+    return jsonify(category=[c.serialize for c in categories])
+
+# JSON API - all items
+@app.route('/items/JSON')
+def itemsJSON():
+    items = session.query(CategoryItem).all()
+    return jsonify(items=[i.serialize for i in items])
+
+# JSON API - details of an item
+@app.route('/item/<int:item_id>/JSON')
+def itemDeatilJSON(item_id):
+    item = session.query(CategoryItem).filter_by(id=item_id).one()
+    return jsonify(item=[item.serialize])
 
 # Google login connect
 @app.route('/gconnect', methods=['POST'])

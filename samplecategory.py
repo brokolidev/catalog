@@ -1,12 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from database_setup import Category, CategoryItem, Base
+
 
 engine = create_engine('sqlite:///category.db')
 # Bind the engine to the metadata of the Base class so that the
 # declaratives can be accessed through a DBSession instance
 Base.metadata.bind = engine
+creater = "bocalist@gmail.com"  # enter your email(username)
 
 DBSession = sessionmaker(bind=engine)
 # A DBSession() instance establishes all conversations with the database
@@ -19,55 +20,64 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-electronics = Category(name="electronics")
+electronics = Category(name="electronics", creater=creater)
 
 session.add(electronics)
 session.commit()
 
-item = CategoryItem(name="Virtual Reality Headsets, Parts & Accessories", description="Virtual Reality Headsets, Parts & Accessories",
-                     category=electronics)
+item = CategoryItem(name="Virtual Reality Headsets, Parts & Accessories",
+                    description="""Virtual Reality Headsets,
+                                    Parts & Accessories""",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Cell Phones, Smart Watches & Accessories", description="Cell Phones, Smart Watches & Accessories",
-                     category=electronics)
+item = CategoryItem(name="Cell Phones, Smart Watches & Accessories",
+                    description="Cell Phones, Smart Watches & Accessories",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="TV, Video & Home Audio Electronics", description="TV, Video & Home Audio Electronics",
-                     category=electronics)
+item = CategoryItem(name="TV, Video & Home Audio Electronics",
+                    description="TV, Video & Home Audio Electronics",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Video Games & Consoles", description="Video Games & Consoles",
-                     category=electronics)
+item = CategoryItem(name="Video Games & Consoles",
+                    description="Video Games & Consoles",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Cameras & Photo", description="Cameras & Photo",
-                     category=electronics)
+item = CategoryItem(name="Cameras & Photo",
+                    description="Cameras & Photo",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Vehicle Electronics & GPS", description="Vehicle Electronics & GPS",
-                     category=electronics)
+item = CategoryItem(name="Vehicle Electronics & GPS",
+                    description="Vehicle Electronics & GPS",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Computers, Tablets & Network Hardware", description="Computers, Tablets & Network Hardware",
-                     category=electronics)
+item = CategoryItem(name="Computers, Tablets & Network Hardware",
+                    description="Computers, Tablets & Network Hardware",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()
 
-item = CategoryItem(name="Smart Home", description="Smart Home",
-                     category=electronics)
+item = CategoryItem(name="Smart Home",
+                    description="Smart Home",
+                    category=electronics, creater=creater)
 
 session.add(item)
 session.commit()

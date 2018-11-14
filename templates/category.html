@@ -18,8 +18,8 @@
               <li class="list-group-item">
                   <a href="/category/{{category.id}}">{{category.name|capitalize}}</a>
                   {% if login_session['username']: %}
-                  <small class="edit_category"><a href="/category/edit/{{category.id}}">edit</a> |</small>
-                  <small class="delete_category"><a href="/category/delete/{{category.id}}">delete</a></small>
+                  <small class="edit_category"><a href="/category/edit/{{category.id}}">Edit</a> |</small>
+                  <small class="delete_category"><a href="/category/delete/{{category.id}}">Delete</a></small>
                   {% endif %}
               </li>
               {% endfor %}

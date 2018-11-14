@@ -38,3 +38,8 @@ There are 4 JSON endpoint included.
 - /categories/JSON > All the categories only.
 - /items/JSON > All the items only.
 - /item/<int:item_id>/JSON > details of an item by providing item_id.
+
+# About google oauth
+
+You need to download your google oauth client_secret file to use google login.
+Save it to in the same directory with app.py file and name it client_secret.json.

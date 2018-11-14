@@ -30,3 +30,11 @@ $ python app.py
 ```
 
 By default, the port was set to 8000. use your browser and access http://localhost:8000 to check this webpage.
+
+## JSON Endpoint
+
+There are 4 JSON endpoint included.
+- /category.json > All categories and information of it's containing items.
+- /categories/JSON > All the categories only.
+- /items/JSON > All the items only.
+- /item/<int:item_id>/JSON > details of an item by providing item_id.

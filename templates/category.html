@@ -17,7 +17,7 @@
               {% for category in categories %}
               <li class="list-group-item">
                   <a href="/category/{{category.id}}">{{category.name|capitalize}}</a>
-                  {% if login_session['username']: %}
+                  {% if login_session['email'] == category.creater %}
                   <small class="edit_category"><a href="/category/edit/{{category.id}}">Edit</a> |</small>
                   <small class="delete_category"><a href="/category/delete/{{category.id}}">Delete</a></small>
                   {% endif %}
@@ -31,7 +31,7 @@
             {% for item in items %}
                 <li class="list-group-item">
                     <a href="/item/{{item.id}}">{{item.name|capitalize}}</a>
-                    {% if login_session['username']: %}
+                    {% if login_session['email'] == item.creater %}
                     <small class="edit_item"><a href="/item/edit/{{item.id}}">Edit</a> |</small>
                     <small class="delete_item"><a href="/item/delete/{{item.id}}">Delete</a></small>
                     {% endif %}

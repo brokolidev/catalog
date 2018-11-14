@@ -30,7 +30,7 @@ class CategoryItem(Base):
     description = Column(String(250))
     datetime = Column(DateTime, default=func.now())
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category)
+    category = relationship(Category, backref='items')
 
     @property
     def serialize(self):
@@ -39,6 +39,7 @@ class CategoryItem(Base):
             'id': self.id,
             'name': self.name,
             'description': self.description,
+            'datetime': self.datetime,
         }
 
 

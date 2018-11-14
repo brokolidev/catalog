@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, flash, jsonify, make_response
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, joinedload
 from database_setup import Category, CategoryItem, Base
 from flask import session as login_session
 import random, string
@@ -138,6 +138,12 @@ def deleteItem(item_id):
     session.commit()
     flash('Item deleted successfully!!')
     return redirect('/')
+
+# JSON API
+@app.route('/catalog.json')
+def categoryJSON():
+    categories = session.query(Category).options(joinedload(Category.items)).all()
+    return jsonify(category=[dict(c.serialize, items=[i.serialize for i in c.items]) for c in categories])
 
 # Google login connect
 @app.route('/gconnect', methods=['POST'])

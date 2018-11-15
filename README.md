@@ -30,6 +30,7 @@ $ python app.py
 ```
 
 By default, the port was set to 8000. use your browser and access http://localhost:8000 to check this webpage.
+* for real server publish, changed port to 80
 
 ## JSON Endpoint
 

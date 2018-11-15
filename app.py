@@ -2,7 +2,7 @@ from flask import (
     Flask,
     render_template,
     request,
-    url_for
+    url_for,
     redirect,
     flash,
     jsonify,

@@ -1,5 +1,13 @@
-from flask import Flask, render_template, request, url_for
-from flask import redirect, flash, jsonify, make_response
+from flask import (
+    Flask,
+    render_template,
+    request,
+    url_for
+    redirect,
+    flash,
+    jsonify,
+    make_response
+)
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
 from database_setup import Category, CategoryItem, Base
@@ -361,7 +369,7 @@ def gdisconnect():
         return redirect('/')
     else:
         response = make_response(
-                    json.dumps('Failed to revoke token for given user.', 400))
+                    json.dumps('Failed to revoke token for given user.'), 400)
         response.headers['Content-Type'] = 'application/json'
         return response
 
